@@ -1,54 +1,70 @@
 const text =
 "Semoga hari ini menjadi hari yang paling indah untukmu yaw ❤️";
 
+const typing = document.getElementById("typing");
+const btn = document.getElementById("btn");
+const hidden = document.getElementById("hidden");
+const music = document.getElementById("bgMusic");
+
 let i = 0;
 
-function typeWriter(){
+// =======================
+// Efek mengetik
+// =======================
+function typeWriter() {
 
-if(i < text.length){
-
-document.getElementById("typing").innerHTML += text.charAt(i);
-
-i++;
-
-setTimeout(typeWriter,50);
-
-}
+    if (i < text.length) {
+        typing.innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typeWriter, 50);
+    }
 
 }
 
 typeWriter();
 
-document.getElementById("btn").onclick=function(){
+// =======================
+// Tombol
+// =======================
+btn.addEventListener("click", function () {
 
-document.getElementById("hidden").style.display="block";
+    hidden.style.display = "block";
+    btn.style.display = "none";
 
-this.style.display="none";
+    // Memutar musik
+    if (music) {
+
+        music.play().catch((err) => {
+            console.log("Musik tidak bisa diputar:", err);
+        });
+
+    }
+
+});
+
+// =======================
+// Efek hati
+// =======================
+function createHeart() {
+
+    const heart = document.createElement("div");
+
+    heart.classList.add("heart");
+
+    heart.innerHTML = "❤️";
+
+    heart.style.left = Math.random() * window.innerWidth + "px";
+
+    heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+
+    heart.style.fontSize = (20 + Math.random() * 20) + "px";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 5000);
 
 }
 
-function createHeart(){
-
-const heart=document.createElement("div");
-
-heart.className="heart";
-
-heart.innerHTML="❤️";
-
-heart.style.left=Math.random()*100+"vw";
-
-heart.style.animationDuration=(Math.random()*3+3)+"s";
-
-heart.style.fontSize=(20+Math.random()*30)+"px";
-
-document.body.appendChild(heart);
-
-setTimeout(()=>{
-
-heart.remove();
-
-},6000);
-
-}
-
-setInterval(createHeart,250);
+setInterval(createHeart, 300);
