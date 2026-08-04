@@ -1,19 +1,6 @@
 const text =
 "Semoga hari ini menjadi hari yang paling indah untukmu yaw ❤️";
 
-const music = document.getElementById("bgMusic");
-
-document.getElementById("btn").addEventListener("click", async function () {
-    document.getElementById("hidden").style.display = "block";
-    this.style.display = "none";
-
-    try {
-        await music.play();
-        console.log("Musik berhasil diputar");
-    } catch (e) {
-        console.error("Musik gagal:", e);
-    }
-
 let i = 0;
 
 function typeWriter(){
