@@ -1,6 +1,8 @@
 const text =
 "Semoga hari ini menjadi hari yang paling indah untukmu yaw ❤️";
 
+const music = document.getElementById("bgMusic");
+
 let i = 0;
 
 function typeWriter(){
@@ -24,6 +26,10 @@ document.getElementById("btn").onclick=function(){
 document.getElementById("hidden").style.display="block";
 
 this.style.display="none";
+
+music.play().catch(err => {
+        console.log("Gagal memutar musik:", err);
+    });
 
 }
 
