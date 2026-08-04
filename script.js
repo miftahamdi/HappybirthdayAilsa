@@ -33,8 +33,6 @@ document.getElementById("btn").addEventListener("click", async function () {
     } catch (e) {
         console.error("Musik gagal:", e);
     }
-});
-
 }
 
 function createHeart(){
