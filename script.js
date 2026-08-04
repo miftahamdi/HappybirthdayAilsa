@@ -21,15 +21,19 @@ setTimeout(typeWriter,50);
 
 typeWriter();
 
-document.getElementById("btn").onclick=function(){
+const music = document.getElementById("bgMusic");
 
-document.getElementById("hidden").style.display="block";
+document.getElementById("btn").addEventListener("click", async function () {
+    document.getElementById("hidden").style.display = "block";
+    this.style.display = "none";
 
-this.style.display="none";
-
-music.play().catch(err => {
-        console.log("Gagal memutar musik:", err);
-    });
+    try {
+        await music.play();
+        console.log("Musik berhasil diputar");
+    } catch (e) {
+        console.error("Musik gagal:", e);
+    }
+});
 
 }
 
